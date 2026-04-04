@@ -40,5 +40,3 @@ A Distributed Multi-Agent System (MAS) built on **SPADE (Smart Python Agent Deve
 - **UI**: Use the `rich` library for terminal output formatting (Tables, Panels).
 
 ---
-
-_Note: If you are an AI assistant helping a developer, prioritize SPADE-specific documentation over general Python threading/multiprocessing libraries._
