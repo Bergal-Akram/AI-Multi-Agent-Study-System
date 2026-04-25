@@ -1,10 +1,10 @@
-#  Collaborative Study Intelligence System
+# Collaborative Study Intelligence System
 
-##  Overview
+## Overview
 
 The **Collaborative Study Intelligence System** is an advanced Distributed Multi-Agent System (MAS) designed to automate, optimize, and evaluate academic study sessions. Developed as a Master 1 project in Artificial Intelligence and Data Science at the University of Larbi Ben M'Hidi, the system orchestrates a swarm of specialized AI agents. These agents work concurrently to generate tailored pedagogical strategies, fetch domain-specific resources, and construct interactive quizzes.
 
-##  Key Features
+## Key Features
 
 - **Asynchronous Agent Swarm:** Built on the SPADE framework to run multiple AI agents concurrently without blocking the main execution thread.
 - **Intelligent Routing:** A central Coordinator agent dynamically routes tasks to specialized "Technical" or "Theoretical" planners based on semantic keyword analysis.
@@ -19,17 +19,25 @@ The **Collaborative Study Intelligence System** is an advanced Distributed Multi
 - **LLM Engine:** Groq API (Llama-3.3-70b-versatile / Llama-3.1-8b-instant)
 - **Concurrency:** Native Python `asyncio`
 
-##  Limitations & Known Issues
-* **Google Scraping Rate Limits:** The retrieval agents rely on web scraping. Despite implementing jitter (randomized delays), aggressive querying can still trigger Google's anti-bot mechanisms (HTTP 429), forcing the system to rely on fallback URLs.
-* **Synchronous API Blocking:** While the SPADE framework runs asynchronously, the current implementation uses the synchronous Groq Python client. This means LLM generation can momentarily block the event loop, preventing true parallel execution of API calls.
-* **Ephemeral State (No Persistence):** Currently, study plans and quizzes are stored in Streamlit's `session_state`. If the server restarts or the user refreshes the page, all generated data is lost.
-* **Static Quiz Evaluation:** The Assessor Agent successfully generates interactive quizzes, but there is no overarching scoring system or analytics dashboard to evaluate the user's performance.
+# Sequence Diagram
 
-##  Future Improvements
-* **Database Integration:** Implement a persistent database architecture (e.g., PostgreSQL or MongoDB) to save user profiles, historical study plans, and quiz results.
-* **Cloud Deployment:** Migrate the local XMPP server (e.g., Ejabberd) and the SPADE Python agents to a dedicated Virtual Private Server (VPS) for robust, 24/7 online availability.
-* **Mentorship & Tracking Agents:** Introduce a new "Mentor Agent" designed to monitor (*suivi*) the user's study progress over time, send proactive study reminders, and adjust future generated plans based on past quiz scores.
-* **Advanced LLM Capabilities:** Upgrade to more specialized models, fine-tune existing models on academic pedagogical data, or implement Retrieval-Augmented Generation (RAG) to allow the agents to read directly from the user's specific university textbooks.
+<p align="center">
+  <img src="../Assets/Diagram_Sequence.png" alt="Multi-Agent Sequence Diagram" width="850"/>
+</p>
+
+## Limitations & Known Issues
+
+- **Google Scraping Rate Limits:** The retrieval agents rely on web scraping. Despite implementing jitter (randomized delays), aggressive querying can still trigger Google's anti-bot mechanisms (HTTP 429), forcing the system to rely on fallback URLs.
+- **Synchronous API Blocking:** While the SPADE framework runs asynchronously, the current implementation uses the synchronous Groq Python client. This means LLM generation can momentarily block the event loop, preventing true parallel execution of API calls.
+- **Ephemeral State (No Persistence):** Currently, study plans and quizzes are stored in Streamlit's `session_state`. If the server restarts or the user refreshes the page, all generated data is lost.
+- **Static Quiz Evaluation:** The Assessor Agent successfully generates interactive quizzes, but there is no overarching scoring system or analytics dashboard to evaluate the user's performance.
+
+## Future Improvements
+
+- **Database Integration:** Implement a persistent database architecture (e.g., PostgreSQL or MongoDB) to save user profiles, historical study plans, and quiz results.
+- **Cloud Deployment:** Migrate the local XMPP server (e.g., Ejabberd) and the SPADE Python agents to a dedicated Virtual Private Server (VPS) for robust, 24/7 online availability.
+- **Mentorship & Tracking Agents:** Introduce a new "Mentor Agent" designed to monitor (_suivi_) the user's study progress over time, send proactive study reminders, and adjust future generated plans based on past quiz scores.
+- **Advanced LLM Capabilities:** Upgrade to more specialized models, fine-tune existing models on academic pedagogical data, or implement Retrieval-Augmented Generation (RAG) to allow the agents to read directly from the user's specific university textbooks.
 
 ## Prerequisite Setup
 
@@ -49,7 +57,7 @@ To ensure the system runs without rate-limit conflicts, every team member must c
 
 ---
 
-##  Installation & Execution
+## Installation & Execution
 
 ### Step 1: Clone and Environment
 

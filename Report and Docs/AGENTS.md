@@ -48,16 +48,16 @@ These agents act as proxies between the synchronous Streamlit UI and the asynchr
 ## Communication Model
 
 - All agents communicate via:
-
   - XMPP protocol (via SPADE)
   - Message objects
   - Message Structure:
   - Message(
-      to="agent@server",
-      body="JSON data",
-      thread="session_id",
-      metadata={"performative": "..."}
+    to="agent@server",
+    body="JSON data",
+    thread="session_id",
+    metadata={"performative": "..."}
     )
+
 - Key Concepts:
   - thread → session isolation
   - performative → message intent
