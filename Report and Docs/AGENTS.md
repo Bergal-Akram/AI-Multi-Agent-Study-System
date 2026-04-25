@@ -44,3 +44,21 @@ These agents act as proxies between the synchronous Streamlit UI and the asynchr
 - **AssessorAgent (`assessor.py`)**:
   - **Role**: The "Quizmaster." Evaluates the finalized study plan and generates a contextual multiple-choice quiz.
   - **Behavior**: Extracts topic names from the payload and enforces an extremely strict JSON schema inside the LLM prompt (mandating double quotes and specific key structures). This ensures the Streamlit UI can parse and render the interactive radio buttons without crashing.
+
+## Communication Model
+
+- All agents communicate via:
+
+  - XMPP protocol (via SPADE)
+  - Message objects
+  - Message Structure:
+  - Message(
+      to="agent@server",
+      body="JSON data",
+      thread="session_id",
+      metadata={"performative": "..."}
+    )
+- Key Concepts:
+  - thread → session isolation
+  - performative → message intent
+  - async receive() loops
